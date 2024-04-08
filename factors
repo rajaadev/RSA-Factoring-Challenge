@@ -1,19 +1,15 @@
 #!/usr/bin/bash
 
-if [ "$#" -ne 1 ]; 
-then
-    echo "Usage: $0 <file>"
-exit 1
-fi
+FILE = $1
 
-FILE="$1"
-
-while read -r NUMBER;
+while read NUMBER;
 do
-	FACTORS=($(factor "$NUMBER"))
-
-    FACTOR1=${FACTORS[1]}
-    FACTOR2=${FACTORS[2]}
-
-    echo "$NUMBER=$(($NUMBERS/$FACTOR1))*$FACTOR2"
-done < "$FILE"
+	FACTORS=($(factor $NUMBER))
+	# Extract the factors from the output of 'factor' command
+	FACTOR1=${FACTORS[1]}
+	FACTOR2=${FACTORS[2]}
+	# Calculate the product of the two factors
+	PRODUCT=$((NUMBER / FACTOR1 * FACTOR2))
+	# Print the factorization in the required format
+	echo "$NUMBER=$FACTOR1*$FACTOR2"
+done < $FILE
