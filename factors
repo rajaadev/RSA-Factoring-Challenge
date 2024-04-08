@@ -8,12 +8,12 @@ fi
 
 FILE="$1"
 
-while read -r NUMBER; do
-
-    FACTORS=($(factor "$NUMBER"))
+while read -r NUMBER;
+do
+	FACTORS=($(factor "$NUMBER"))
 
     FACTOR1=${FACTORS[1]}
     FACTOR2=${FACTORS[2]}
 
-    echo "$NUMBER=$FACTOR1*$FACTOR2"
+    echo "$NUMBER=$(($NUMBERS/$FACTOR1))*$FACTOR2"
 done < "$FILE"
